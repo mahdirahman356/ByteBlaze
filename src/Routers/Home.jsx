@@ -5,7 +5,9 @@ import Footer from "./Footer";
 const Home = () => {
     return (
         <div>
+            <div className="h-16">
             <Navbar></Navbar>
+            </div>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>

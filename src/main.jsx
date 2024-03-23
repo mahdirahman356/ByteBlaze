@@ -9,6 +9,9 @@ import Home from './Routers/Home';
 import Blogs from './Routers/Blogs';
 import Bookmarks from './Bookmarks';
 import HomeContant from './Routers/HomeContant';
+import CardDetails from './Routers/CardDetails';
+import Content from './Tabs/Content';
+import Author from './Tabs/Author';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +29,28 @@ const router = createBrowserRouter([
       {
         path:"/bookmark",
         element: <Bookmarks></Bookmarks>
+      },
+      {
+        path:"/blog/:id",
+        loader : ({params}) => fetch(`https://dev.to/api/articles/${params.id}`),
+        element:<CardDetails></CardDetails>,  
+        children : [
+           {
+            index : true,
+            loader : ({params}) => fetch(`https://dev.to/api/articles/${params.id}`),
+            element :<Content></Content>
+           },
+           {
+            path : "content",
+            loader : ({params}) => fetch(`https://dev.to/api/articles/${params.id}`),
+            element :<Content></Content>
+           },
+           {
+            path : "author",
+            element : <Author></Author>
+           }
+        ]
+        
       }
     ]
   },

@@ -1,8 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className="shadow-lg">
+        <div className="shadow-lg fixed z-10 w-full">
             <div className="navbar bg-base-100 flex w-[95%] mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
