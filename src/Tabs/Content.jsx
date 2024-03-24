@@ -1,8 +1,13 @@
+import Markdown from "react-markdown";
 import { useLoaderData } from "react-router-dom";
+import rehypeRaw from "rehype-raw";
+
 
 const Content = () => {
-    let cardDetails = useLoaderData()
-    let {cover_image,tags,title,description} = cardDetails
+    let content = useLoaderData()
+    let {cover_image,tags,title,description,body_html} = content
+    const contentString = typeof body_html === 'object' ? JSON.stringify(body_html) : body_html;
+
     return (
         <div>
            <div className="border-2 border-gray-300 p-3 space-y-5">
@@ -14,8 +19,15 @@ const Content = () => {
                  <div>
                     <p className="font-bold">{title}</p>
                     <p>{description}</p>
-                    {/* <Markdown remarkPlugins={[rehypeRaw]}>{body_html}</Markdown> */}
-                    {/* <p>{body_html}</p> */}
+                     
+
+
+                <div className="">
+                <Markdown rehypePlugins={[rehypeRaw]}>
+                     {contentString}
+                   </Markdown>
+                </div>
+                   
                  </div> 
              </div>
         </div>

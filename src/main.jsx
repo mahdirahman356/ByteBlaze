@@ -47,6 +47,7 @@ const router = createBrowserRouter([
            },
            {
             path : "author",
+            loader : ({params}) => fetch(`https://dev.to/api/articles/${params.id}`),
             element : <Author></Author>
            }
         ]
