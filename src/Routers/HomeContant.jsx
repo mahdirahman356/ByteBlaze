@@ -1,6 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigation } from 'react-router-dom';
 import images from './images/wave.svg'
+import Loader from './Srorege/Loader/Loader';
 const HomeContant = () => {
+    let nav = useNavigation()
+    if(nav.state === 'loading') return <Loader></Loader>
     return (
         <div>
           <div className="hero  h-[100vh]  md:h-[83vh] bg-cover bg-center relative" style={{backgroundImage: `url(${images})` }}>

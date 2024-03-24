@@ -3,17 +3,19 @@ import { NavLink,  Outlet,  useLoaderData } from "react-router-dom";
 // import Content from "../Tabs/Content";
 import { MdBookmarkAdd } from "react-icons/md";
 import toast, { Toaster } from 'react-hot-toast';
+import { saveBlogs } from "./Srorege/Storege";
 
      
 
 const CardDetails = () => {
     let cardDetails = useLoaderData()
-    let {reading_time_minutes,title,published_at,comments_count,positive_reactions_count} = cardDetails
+    let {id,reading_time_minutes,title,published_at,comments_count,positive_reactions_count} = cardDetails
     console.log(cardDetails)
     let [tabs , setTabs] = useState(0)
 
     let handleBookMark = ()=> {
          toast.success('blood bookmarked successfully')
+         saveBlogs(id)
     }
     return (
         <div className=" w-[90%] md:w-[80%] lg:w-[50%] mx-auto space-y-5">
@@ -58,7 +60,7 @@ const CardDetails = () => {
 		<span>Author</span>
     </NavLink>
        <div onClick={handleBookMark} className="ml-3 bg-gray-200 flex justify-center items-center p-2 rounded-full">
-       <MdBookmarkAdd className=" text-[20px] text-pink-400"/>
+       <MdBookmarkAdd className=" text-[20px] text-cyan-500"/>
        </div>
        <Toaster></Toaster>
     </div> 

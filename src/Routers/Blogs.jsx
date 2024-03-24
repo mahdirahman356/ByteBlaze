@@ -1,9 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import BlogsContant from "./BlogsContant";
-
+import { useNavigation } from "react-router-dom";
+import Loader from "./Srorege/Loader/Loader";
 const Blogs = () => {
     let blogs = useLoaderData()
+	let navigation = useNavigation()
+		if(navigation.state === 'loading')  return <Loader></Loader>
+
     return (
+
         <div>
              <div>
           <section className=" text-gray-100">
@@ -68,10 +73,11 @@ const Blogs = () => {
 	</div>
 </section>
 </div>
-        
+
         </div>
-       
+		
     );
+
 };
 
 export default Blogs;

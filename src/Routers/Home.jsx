@@ -1,15 +1,18 @@
-import { Outlet } from "react-router-dom";
+import { Outlet} from "react-router-dom";
 import Navbar from "../Navebar/Navbar";
 import Footer from "./Footer";
 
 const Home = () => {
     return (
         <div>
-            <div className="h-16">
+            <div className="h-16">   
             <Navbar></Navbar>
             </div>
-            <Outlet></Outlet>
-            <Footer></Footer>
+        
+           <div>
+             <Outlet></Outlet>
+             <Footer></Footer>
+             </div>
         </div>
     );
 };
